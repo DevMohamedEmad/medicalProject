@@ -1,0 +1,50 @@
+<?php require '../../config.php';  ?>
+<?php require BLA.'inc/header.php';  ?>
+<?php require BL.'functions/validate.php';?>
+<?php
+
+$id=$_GET['id'];
+
+if(isset($id) && is_numeric($id)){
+    $row=getRow('admin' , 'admin_id' , $id);
+    if(!$row){
+        header("location:".BURLA); 
+    }
+}else{
+    header("location:".BURLA); 
+}
+
+?>
+
+
+
+<div class="col-sm-6 offset-sm-3 border p-3">
+       <?php  require(BL.'functions/mesages.php');   ?>
+        <h3 class="text-center p-3 bg-primary text-white">Edit Admin</h3>
+        <form method="post" action="<?php echo BURLA . 'admin/update.php'?>">
+            <div class="form-group">
+                <label >Name Of Admin</label>
+                <input type="text" name="name" class="form-control"  value="<?php echo $row['admin_name']; ?>">
+                <input type="hidden" name="id" value="<?php echo $row['admin_id']; ?>">
+            </div>
+
+          
+            <div class="form-group">
+                <label >Email Of Admin</label>
+                <input type="text" name="email" class="form-control"  value="<?php echo $row['admin_email']; ?>">
+            </div>
+           
+            <button type="submit" name="submit" class="btn btn-success">Save</button>
+        </form>
+       
+    </div>
+
+
+
+
+
+
+
+
+
+<?php require BLA.'/inc/footer.php';  ?>

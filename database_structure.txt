@@ -1,0 +1,6 @@
+[ 1 ] --> Cities
+          ( city_id , city_name , city_created_at)
+
+[ 2 ] --> Services 
+          ( service_id , service_name , service_created_at )
+          
